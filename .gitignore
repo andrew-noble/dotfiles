@@ -12,6 +12,7 @@
 *.crt
 *.enc
 *.gpg
+.secrets
 
 # Ignore local overrides
 .local/
