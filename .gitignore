@@ -1,0 +1,18 @@
+# System/user-specific files
+*.swp
+*.swo
+*.bak
+*.tmp
+.DS_Store
+*.log
+
+# SSH or secrets (if added by mistake)
+*.pem
+*.key
+*.crt
+*.enc
+*.gpg
+
+# Ignore local overrides
+.local/
+secrets.*
