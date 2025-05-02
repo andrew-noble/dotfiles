@@ -12,12 +12,18 @@ set $mod Mod4
 
 font pango:JetBrainsMono Nerd Font 10
 
+# auto starts whatever is in ~/.config/autostart
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i /home/andrew/Pictures/talkeetna-background.jpeg --blur 5 --clock
+# bg
+exec --no-startup-id feh --bg-scale /home/andrew/Pictures/talkeetna-background.jpeg
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
+# dunst is a notification daemon
 exec --no-startup-id dunst
+# i like using the gnome keyring daemon even in i3, it just works nicely with .pam_environment and ~/.ssh
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh
+# power manager for backlight, sleeping etc
+exec --no-startup-id xfce4-power-manager
 
 # Volume ----------------------------------------------------------------------
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -119,10 +125,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # Resize mode -----------------------------------------------------------------
 mode "resize" {
-  bindsym j            resize shrink width 10 px or 10 ppt
+  bindsym h            resize shrink width 10 px or 10 ppt
   bindsym k            resize grow   height 10 px or 10 ppt
-  bindsym l            resize shrink height 10 px or 10 ppt
-  bindsym semicolon    resize grow   width 10 px or 10 ppt
+  bindsym j            resize shrink height 10 px or 10 ppt
+  bindsym l    resize grow   width 10 px or 10 ppt
   bindsym Left         resize shrink width 10 px or 10 ppt
   bindsym Down         resize grow   height 10 px or 10 ppt
   bindsym Up           resize shrink height 10 px or 10 ppt
