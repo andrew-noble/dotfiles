@@ -24,6 +24,8 @@ exec --no-startup-id dunst
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh
 # power manager for backlight, sleeping etc
 exec --no-startup-id xfce4-power-manager
+# this configures the lock screen
+exec --no-startup-id xfce4-screensaver
 
 # Volume ----------------------------------------------------------------------
 set $refresh_i3status killall -SIGUSR1 i3status
