@@ -1,4 +1,4 @@
 theme           = "Ollie"
-shell-integration = none
-cursor-style       = "block"
+shell-integration-features = no-cursor
+cursor-style       = block
 cursor-style-blink = true
