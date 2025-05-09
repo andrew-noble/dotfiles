@@ -56,10 +56,8 @@ bindsym $mod+Shift+f    exec --no-startup-id thunar
 bindsym $mod+Shift+s    exec --no-startup-id gnome-control-center
 
 # Focus -----------------------------------------------------------------------
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+j focus next
+bindsym $mod+k focus prev
 bindsym $mod+Left  focus left
 bindsym $mod+Down  focus down
 bindsym $mod+Up    focus up
@@ -76,7 +74,8 @@ bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
 # Layout ----------------------------------------------------------------------
-# bindsym $mod+h split h
+default_orientation horizontal
+bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
@@ -130,7 +129,7 @@ mode "resize" {
   bindsym h            resize shrink width 10 px or 10 ppt
   bindsym k            resize grow   height 10 px or 10 ppt
   bindsym j            resize shrink height 10 px or 10 ppt
-  bindsym l    resize grow   width 10 px or 10 ppt
+  bindsym l            resize grow   width 10 px or 10 ppt
   bindsym Left         resize shrink width 10 px or 10 ppt
   bindsym Down         resize grow   height 10 px or 10 ppt
   bindsym Up           resize shrink height 10 px or 10 ppt
@@ -168,5 +167,5 @@ exec --no-startup-id setxkbmap -option caps:escape_shifted_capslock
 # mouse: faster + natural scrolling
 exec --no-startup-id sh -c 'sleep 2 && xinput --set-prop "PIXA3854:00 093A:0274 Mouse" "libinput Accel Speed" 0.60 && xinput --set-prop "PIXA3854:00 093A:0274 Mouse" "libinput Natural Scrolling Enabled" 1'
 # touchpad: faster + natural scrolling + touch to click + right click with two fingers
-exec --no-startup-id sh -c 'sleep 2 && xinput --set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Accel Speed" 0.60 && xinput --set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Natural Scrolling Enabled" 1 && xinput --set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Click Method Enabled" 0 1 && xinput --set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 1'
+exec --no-startup-id sh -c 'sleep 2 && xinput --set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Accel Speed" 0.60 && xinput --set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Natural Scrolling Enabled" 1 && xinput --set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Click Method Enabled" 1 0 && xinput --set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 1'
 
