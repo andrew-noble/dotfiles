@@ -163,3 +163,4 @@ alias rsnw="~/wifi-reload.sh"
 
 # this adds homebrew to the path env variable (all i use with homebrew rn is nvim)
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+. "$HOME/.cargo/env"
