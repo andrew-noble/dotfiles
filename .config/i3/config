@@ -86,8 +86,8 @@ bindsym $mod+a focus parent
 
 # Workspaces ------------------------------------------------------------------
 set $ws1 "1:web"
-set $ws2 "2:term"
-set $ws3 "3:ide"
+set $ws2 "2:ide"
+set $ws3 "3:term"
 set $ws4 "4:obsidian"
 set $ws5 "5"
 set $ws6 "6"
@@ -157,8 +157,8 @@ bar {
 
 # Window assignments ----------------------------------------------------------
 assign [class="brave"] $ws1
-assign [class="ghostty"] $ws2
-assign [class="Cursor"] $ws3
+assign [class="Cursor"] $ws2
+assign [class="ghostty"] $ws3
 assign [class="obsidian"] $ws4
 
 # Caps → Esc (Shift+Caps = Caps) ---------------------------------------------
