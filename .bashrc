@@ -145,6 +145,11 @@ function eztree() {
   tree -C -I 'node_modules|.git|dist|build|coverage' "${1:-.}" | tee >(xclip -selection clipboard) && echo "tree copied to clipboard"
 }
 
+# in root of a python/ts project, this will count the lines of code
+function linesofcode() {
+  find . \( -name '*.py' -o -name '*.ts' \) -not -path '*/node_modules/*' -not -path '*/venv/*' | xargs wc -l
+}
+
 #source my secrets file (not here bc this is backed up to github)
 [ -f ~/.secrets ] && source ~/.secrets
 
