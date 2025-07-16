@@ -167,6 +167,8 @@ alias cdp='cd ~/coding/projects'
 alias rsnw="~/wifi-reload.sh"
 alias screenrecord='obs'
 alias video='mpv'
+# serve a static html site to 3000, useful for personal website
+alias serve='python3 -m http.server 3000'
 
 # this adds homebrew to the path env variable (all i use with homebrew rn is nvim)
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
