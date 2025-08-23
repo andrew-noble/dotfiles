@@ -94,7 +94,12 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+
+## just for external monitor business:
+# external monitor gets workspace 1
+workspace 1 output DisplayPort-2
+# laptop screen gets workspace 2
+workspace 2 output eDPet $ws10 "10"
 
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
