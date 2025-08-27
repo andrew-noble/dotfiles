@@ -167,7 +167,7 @@ assign [class="ghostty"] $ws3
 assign [class="obsidian"] $ws4
 assign [class="Slack"] $ws5
 
-# Caps → Esc (Shift+Caps = Caps) ---------------------------------------------
+# Caps → Esc (Shift+Caps = Caps) (don't really need this bc its in .xprofile now but w/e)-------------------
 exec --no-startup-id setxkbmap -option caps:escape_shifted_capslock
 
 # mouse: faster + natural scrolling
