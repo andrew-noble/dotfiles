@@ -174,3 +174,5 @@ alias o='xdg-open'
 # this adds homebrew to the path env variable (all i use with homebrew rn is nvim)
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 . "$HOME/.cargo/env"
+
+alias pdf2gray='f(){ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dProcessColorModel=/DeviceGray -sColorConversionStrategy=Gray -dOverrideICC -o "${1%.pdf}-gray.pdf" "$1"; }; f'
