@@ -141,9 +141,7 @@ function gq() {
 # eztree - Displays and copies directory trees
 # Usage: eztree [directory]
 # (uses current directory if none provided)
-function eztree() {
-  tree -C -I 'node_modules|.git|dist|build|coverage' "${1:-.}" | tee >(xclip -selection clipboard) && echo "tree copied to clipboard"
-}
+function eztree() { tree -C -I 'node_modules|.git|dist|build|coverage|venv|__pycache__|.mypy_cache|.pytest_cache|.idea|.vscode' "${1:-.}" | tee >(xclip -selection clipboard) && echo "tree copied to clipboard"; }
 
 # in root of a python/ts project, this will count the lines of code
 function linesofcode() {
