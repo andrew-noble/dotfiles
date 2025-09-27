@@ -174,3 +174,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 . "$HOME/.cargo/env"
 
 alias pdf2gray='f(){ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dProcessColorModel=/DeviceGray -sColorConversionStrategy=Gray -dOverrideICC -o "${1%.pdf}-gray.pdf" "$1"; }; f'
+alias pdf2letter='f(){ gs -sDEVICE=pdfwrite -sPAPERSIZE=letter -dFIXEDMEDIA -dPDFFitPage -o "${1%.pdf}-letter.pdf" "$1"; }; f'
+
+# fuzzy finder config -- picks fd as the find engine, and filters out deps folders
+export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --exclude .git --exclude node_modules --exclude venv --exclude .venv'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
