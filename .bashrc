@@ -179,3 +179,14 @@ alias pdf2letter='f(){ gs -sDEVICE=pdfwrite -sPAPERSIZE=letter -dFIXEDMEDIA -dPD
 # fuzzy finder config -- picks fd as the find engine, and filters out deps folders
 export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --exclude .git --exclude node_modules --exclude venv --exclude .venv'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# super cool shortcut that drops you into fzf if you do cd without an argument
+cd() {
+  if [ $# -eq 0 ]; then
+    local dir
+    dir=$(fdfind -t d . | fzf) || return
+    builtin cd "$dir"
+  else
+    builtin cd "$@"
+  fi
+}
