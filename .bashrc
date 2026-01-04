@@ -190,3 +190,5 @@ cd() {
     builtin cd "$@"
   fi
 }
+
+source /opt/ros/jazzy/setup.bash
