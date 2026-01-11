@@ -192,3 +192,28 @@ cd() {
 }
 
 source /opt/ros/jazzy/setup.bash
+
+# this is for setting up a workspace-scoped ROS environment
+function rosenv() {
+  # Find nearest ROS workspace (has src/ directory)
+  local dir="$PWD"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -d "$dir/src" ]]; then
+      # Source ROS 2 underlay
+      source /opt/ros/jazzy/setup.bash
+
+      # Source overlay if built
+      if [[ -f "$dir/install/setup.bash" ]]; then
+        source "$dir/install/setup.bash"
+        echo "[rosenv] Sourced overlay: $dir"
+      else
+        echo "[rosenv] Workspace found but not built yet"
+      fi
+      return 0
+    fi
+    dir="$(dirname "$dir")"
+  done
+
+  echo "[rosenv] No ROS workspace found in path"
+  return 1
+}
