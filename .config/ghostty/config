@@ -2,3 +2,4 @@ theme           = "Ollie"
 shell-integration-features = no-cursor
 cursor-style       = block
 cursor-style-blink = true
+keybind = ctrl+backspace=text:\x17

@@ -219,3 +219,12 @@ function rosenv() {
 }
 
 alias glol='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"'
+
+# ---- bash history (this lets tmux windows all see same history) ----
+shopt -s histappend
+HISTSIZE=100000
+HISTFILESIZE=200000
+HISTCONTROL=ignoreboth
+HISTTIMEFORMAT='%F %T '
+
+PROMPT_COMMAND='history -a; history -n'
