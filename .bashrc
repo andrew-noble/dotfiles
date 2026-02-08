@@ -162,12 +162,19 @@ alias venv='source .venv/bin/activate'
 alias swgd='sudo wg-quick down wg0'
 alias swgu='sudo wg-quick up wg0'
 alias cdp='cd ~/coding/projects'
+alias cdc='cd ~/cmu-mrsd/catalyst-robot/'
+alias cc='claude'
 alias rsnw="~/wifi-reload.sh"
 alias screenrecord='obs'
 alias video='mpv'
 # serve a static html site to 3000, useful for personal website
 alias serve='python3 -m http.server 3000'
-alias o='xdg-open'
+
+# open file with appropriate application, send to background and disown
+o() {
+  xdg-open "$@" &>/dev/null &
+  disown
+}
 
 # this adds homebrew to the path env variable (all i use with homebrew rn is nvim)
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -190,8 +197,6 @@ cd() {
     builtin cd "$@"
   fi
 }
-
-source /opt/ros/jazzy/setup.bash
 
 # this is for setting up a workspace-scoped ROS environment
 function rosenv() {
