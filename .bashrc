@@ -163,6 +163,7 @@ alias swgd='sudo wg-quick down wg0'
 alias swgu='sudo wg-quick up wg0'
 alias cdp='cd ~/coding/projects'
 alias cdc='cd ~/cmu-mrsd/catalyst-robot/'
+alias cds='cd ~/cmu-mrsd/2sem/'
 alias cc='claude'
 alias rsnw="~/wifi-reload.sh"
 alias screenrecord='obs'
