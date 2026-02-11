@@ -232,3 +232,6 @@ HISTSIZE=100000
 HISTFILESIZE=200000
 HISTCONTROL=ignoreboth
 HISTTIMEFORMAT='%F %T '
+
+# holy shit vim mode
+set -o vi
