@@ -91,12 +91,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias lmc="echo 'lists listening ports, preserving helpful header: lsof -i -P -n | grep -E \"COMMAND|LISTEN\"'"
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -154,22 +148,9 @@ function linesofcode() {
 #this prints the big ubuntu and hw stats splash
 neofetch
 
-alias v='nvim'
-alias vi='nvim'
-alias vim='nvim'
-alias python='python3'
-alias venv='source .venv/bin/activate'
-alias swgd='sudo wg-quick down wg0'
-alias swgu='sudo wg-quick up wg0'
-alias cdp='cd ~/coding/projects'
-alias cdc='cd ~/cmu-mrsd/catalyst-robot/'
-alias cds='cd ~/cmu-mrsd/2sem/'
-alias cc='claude'
-alias rsnw="~/wifi-reload.sh"
-alias screenrecord='obs'
-alias video='mpv'
-# serve a static html site to 3000, useful for personal website
-alias serve='python3 -m http.server 3000'
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
 
 # open file with appropriate application, send to background and disown
 o() {
@@ -180,9 +161,6 @@ o() {
 # this adds homebrew to the path env variable (all i use with homebrew rn is nvim)
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 . "$HOME/.cargo/env"
-
-alias pdf2gray='f(){ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dProcessColorModel=/DeviceGray -sColorConversionStrategy=Gray -dOverrideICC -o "${1%.pdf}-gray.pdf" "$1"; }; f'
-alias pdf2letter='f(){ gs -sDEVICE=pdfwrite -sPAPERSIZE=letter -dFIXEDMEDIA -dPDFFitPage -o "${1%.pdf}-letter.pdf" "$1"; }; f'
 
 # fuzzy finder config -- picks fd as the find engine, and filters out deps folders
 export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --exclude .git --exclude node_modules --exclude venv --exclude .venv'
@@ -234,4 +212,4 @@ HISTCONTROL=ignoreboth
 HISTTIMEFORMAT='%F %T '
 
 # holy shit vim mode
-set -o vi
+# set -o vi
