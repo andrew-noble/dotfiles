@@ -213,3 +213,4 @@ HISTTIMEFORMAT='%F %T '
 
 # holy shit vim mode
 # set -o vi
+source /opt/ros/jazzy/setup.bash
