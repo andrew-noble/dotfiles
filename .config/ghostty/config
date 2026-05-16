@@ -5,3 +5,4 @@ cursor-style-blink = true
 keybind = ctrl+backspace=text:\x17
 
 term = xterm-256color
+font-feature = -calt
