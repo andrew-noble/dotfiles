@@ -1,18 +1,22 @@
 # dotfiles
 
-This is a place where I back up my personal configurations for many common linux tools.
+Personal configs for bash, tmux, ghostty, and neovim.
 
-## bootstrap.sh Symlink Setup Script
+Files are stored without leading dots so the repo is easy to navigate. `bootstrap.sh` creates the symlinks that put them where the system expects.
 
-This script sets up symlinks from your home directory to the configuration files stored in ~/dotfiles-backup, so your dotfiles can be tracked in git while still being used normally by the system.
+## Setup
 
-It links configs for:
+```sh
+./bootstrap.sh
+```
 
-- bash (~/.bashrc)
-- tmux
-- i3
-- i3blocks
-- ghostty
-- neovim
+Links created:
 
-Uses ln -sf to overwrite existing files/links, so it can be re-run safely.
+| repo | system |
+|------|--------|
+| `bashrc` | `~/.bashrc` |
+| `bash_aliases` | `~/.bash_aliases` |
+| `inputrc` | `~/.inputrc` |
+| `config/tmux/` | `~/.config/tmux/` |
+| `config/ghostty/` | `~/.config/ghostty/` |
+| `config/nvim/` | `~/.config/nvim/` |

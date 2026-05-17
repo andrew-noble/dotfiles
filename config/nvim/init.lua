@@ -13,8 +13,8 @@ vim.opt.splitbelow = true
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10 -- keep 10 lines above/below cursor
 vim.opt.confirm = true -- prompt to save instead of failing on :q
-vim.keymap.set('n', '<leader><Tab>', ':bnext<CR>') -- space then tab to cycle between buffers
-vim.keymap.set('n', '<leader><S-Tab>', ':bprev<CR>') -- space then shift-tab to go reverse
+vim.keymap.set('n', '<Tab>', ':bnext<CR>')
+vim.keymap.set('n', '<S-Tab>', ':bprev<CR>')
 
 -- flash text when yanked
 -- (this is an autocommand. It's like a hook or event listener in that it gets

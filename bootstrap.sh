@@ -1,19 +1,20 @@
 #!/bin/bash
 
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Bash
-ln -sf ~/dotfiles-backup/.bashrc ~/.bashrc
+ln -sf "$DOTFILES/bashrc" ~/.bashrc
+ln -sf "$DOTFILES/bash_aliases" ~/.bash_aliases
 
-# Tmux
-ln -sf ~/dotfiles-backup/.config/tmux ~/.tmux.conf
+# Input
+ln -sf "$DOTFILES/inputrc" ~/.inputrc
 
-# i3
-ln -sf ~/dotfiles-backup/.config/i3 ~/.config/i3
+# Tmux (XDG path; tmux 3.1+ picks this up automatically)
+mkdir -p ~/.config
+ln -sf "$DOTFILES/config/tmux" ~/.config/tmux
 
-# i3blocks
-ln -sf ~/dotfiles-backup/.config/i3blocks ~/.config/i3blocks
-
-# ghostty
-ln -sf ~/dotfiles-backup/.config/ghostty ~/.config/ghostty
+# Ghostty
+ln -sf "$DOTFILES/config/ghostty" ~/.config/ghostty
 
 # Neovim
-ln -sf ~/dotfiles-backup/.config/nvim ~/.config/nvim
+ln -sf "$DOTFILES/config/nvim" ~/.config/nvim
