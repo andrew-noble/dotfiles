@@ -1,4 +1,5 @@
 theme           = "Ollie"
+fullscreen = true
 shell-integration-features = no-cursor
 cursor-style       = block
 cursor-style-blink = true
