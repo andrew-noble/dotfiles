@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Navigation Philosophy</title>
+  <style>
+    body {
+      background: #1a1b26;
+      color: #e0af68;
+      font-family: monospace;
+      max-width: 720px;
+      margin: 60px auto;
+      padding: 0 24px;
+      line-height: 1.7;
+    }
+    h1 { color: #7aa2f7; margin-bottom: 4px; }
+    h2 { color: #bb9af7; margin-top: 48px; margin-bottom: 12px; border-bottom: 1px solid #2a2b3d; padding-bottom: 6px; }
+    p { color: #c0caf5; }
+    .key {
+      display: inline-block;
+      background: #24283b;
+      border: 1px solid #414868;
+      border-radius: 4px;
+      padding: 1px 8px;
+      color: #e0af68;
+      font-size: 0.9em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+    th {
+      text-align: left;
+      color: #7aa2f7;
+      border-bottom: 1px solid #2a2b3d;
+      padding: 6px 12px;
+    }
+    td {
+      padding: 6px 12px;
+      color: #c0caf5;
+      border-bottom: 1px solid #1e2030;
+    }
+    td:first-child { color: #e0af68; }
+
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin: 24px 0;
+    }
+    .layer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      border-left: 3px solid;
+    }
+    .layer.os     { background: #1f2335; border-color: #7aa2f7; }
+    .layer.tmux-w { background: #1f2335; border-color: #bb9af7; }
+    .layer.tmux-p { background: #1f2335; border-color: #e0af68; }
+    .layer.nvim-b { background: #1f2335; border-color: #9ece6a; }
+    .layer.nvim-p { background: #1f2335; border-color: #f7768e; }
+    .layer-label  { width: 160px; color: #565f89; font-size: 0.85em; flex-shrink: 0; }
+    .layer-keys   { flex: 1; }
+    .arrow {
+      text-align: center;
+      color: #414868;
+      font-size: 0.8em;
+      padding-left: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Navigation Philosophy</h1>
+<p>Every layer of the stack uses the same spatial vocabulary — <strong>h</strong> goes left, <strong>l</strong> goes right — with a different modifier that gets lighter as you go deeper. Muscle memory transfers across contexts.</p>
+
+<h2>The Stack</h2>
+
+<div class="stack">
+  <div class="layer os">
+    <div class="layer-label">OS applications</div>
+    <div class="layer-keys"><span class="key">Super</span> + <span class="key">Tab</span></div>
+  </div>
+  <div class="arrow">↓ inside a terminal</div>
+  <div class="layer tmux-w">
+    <div class="layer-label">tmux windows</div>
+    <div class="layer-keys"><span class="key">Alt</span> + <span class="key">h</span> / <span class="key">l</span></div>
+  </div>
+  <div class="arrow">↓ inside a window</div>
+  <div class="layer tmux-p">
+    <div class="layer-label">tmux panes</div>
+    <div class="layer-keys"><span class="key">Prefix</span> + <span class="key">h</span> <span class="key">j</span> <span class="key">k</span> <span class="key">l</span></div>
+  </div>
+  <div class="arrow">↓ inside nvim</div>
+  <div class="layer nvim-b">
+    <div class="layer-label">nvim buffers</div>
+    <div class="layer-keys"><span class="key">Tab</span> / <span class="key">Shift+Tab</span></div>
+  </div>
+  <div class="arrow">↓ inside a buffer</div>
+  <div class="layer nvim-p">
+    <div class="layer-label">nvim panes</div>
+    <div class="layer-keys"><span class="key">H</span> / <span class="key">L</span> &nbsp;<span style="color:#565f89;font-size:0.85em">(capital, normal mode)</span></div>
+  </div>
+</div>
+
+<h2>tmux</h2>
+<table>
+  <tr><th>Key</th><th>Action</th></tr>
+  <tr><td><span class="key">Alt+h</span> / <span class="key">Alt+l</span></td><td>cycle windows left / right</td></tr>
+  <tr><td><span class="key">Prefix</span> + <span class="key">h/j/k/l</span></td><td>move between panes</td></tr>
+  <tr><td><span class="key">Ctrl+a</span></td><td>prefix (alternate, alongside Ctrl+b)</td></tr>
+</table>
+
+<p>Alt+h/l for windows is modifier-only — no prefix — so it's fast. Pane movement requires the prefix, which adds just enough friction to feel intentional.</p>
+
+<h2>nvim</h2>
+<table>
+  <tr><th>Key</th><th>Action</th></tr>
+  <tr><td><span class="key">Tab</span> / <span class="key">Shift+Tab</span></td><td>cycle buffers left / right</td></tr>
+  <tr><td><span class="key">H</span> / <span class="key">L</span></td><td>move between vertical panes</td></tr>
+</table>
+
+<p>Capital H/L repurpose seldom-used defaults (screen-top / screen-bottom jumps) for pane movement, keeping navigation on the home row with no modifier at all.</p>
+
+<h2>Synergy with the OS</h2>
+<p>Super+Tab sits at the top of the hierarchy — same left/right logic, heaviest modifier. The mental model is consistent: <em>heavier modifier = higher layer of the stack</em>. Super owns the OS, Alt owns tmux windows, bare keys own the terminal's interior.</p>
+
+</body>
+</html>

@@ -15,6 +15,9 @@ vim.opt.scrolloff = 10 -- keep 10 lines above/below cursor
 vim.opt.confirm = true -- prompt to save instead of failing on :q
 vim.keymap.set('n', '<Tab>', ':bnext<CR>')
 vim.keymap.set('n', '<S-Tab>', ':bprev<CR>')
+vim.keymap.set('n', 'H', '<C-w>h')
+vim.keymap.set('n', 'L', '<C-w>l')
+vim.keymap.set('n', '<Esc>', '<cmd>noh<CR><Esc>')
 
 -- flash text when yanked
 -- (this is an autocommand. It's like a hook or event listener in that it gets
@@ -51,6 +54,64 @@ require('conform').setup {
 -- syntax highlighting with tree sitter
 vim.pack.add { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' } }
 require('nvim-treesitter').install({ 'bash', 'lua', 'python', 'html', 'markdown' })
+
+-- treesitter text objects: yaf/yif (function), yac/yic (class), etc.
+vim.pack.add { 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' }
+require('nvim-treesitter-textobjects').setup {
+  select = {
+    enable = true,
+    lookahead = true, -- jump forward to next text object if not inside one
+    keymaps = {
+      ['af'] = '@function.outer',
+      ['if'] = '@function.inner',
+      ['ac'] = '@class.outer',
+      ['ic'] = '@class.inner',
+    },
+  },
+}
+
+-- diagnostics: virtual text inline + float auto-pops when cursor rests on an error
+vim.diagnostic.config {
+  virtual_text = true,
+  signs = true,
+  float = { border = 'rounded' },
+}
+vim.api.nvim_create_autocmd('CursorHold', {
+  callback = function() vim.diagnostic.open_float(nil, { focus = false }) end,
+})
+
+-- git blame inline on current line; priority=1 so diagnostics win when both are present
+vim.pack.add { 'https://github.com/lewis6991/gitsigns.nvim' }
+require('gitsigns').setup {
+  current_line_blame = true,
+  current_line_blame_opts = { delay = 400, virt_text_priority = 1 },
+}
+
+-- LSP: start pyright when opening python files
+-- (requires: pip install pyright)
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'python',
+  callback = function()
+    vim.lsp.start({
+      name = 'pyright',
+      cmd = { 'pyright-langserver', '--stdio' },
+      settings = {
+        python = {
+          analysis = {
+            extraPaths = { '/opt/ros/jazzy/lib/python3.12/site-packages' },
+          },
+        },
+      },
+    })
+  end,
+})
+
+-- show completion popup automatically while typing
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = true })
+  end,
+})
 
 vim.opt.number = true -- add line numbers
 
