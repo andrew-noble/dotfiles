@@ -18,3 +18,12 @@ ln -sf "$DOTFILES/config/ghostty" ~/.config/ghostty
 
 # Neovim
 ln -sf "$DOTFILES/config/nvim" ~/.config/nvim
+
+# Git (XDG config)
+ln -sf "$DOTFILES/config/git" ~/.config/git
+
+# Systemd user timer for auto-backup
+mkdir -p ~/.config/systemd/user
+ln -sf "$DOTFILES/config/systemd/user/dotfiles-backup.service" ~/.config/systemd/user/dotfiles-backup.service
+ln -sf "$DOTFILES/config/systemd/user/dotfiles-backup.timer" ~/.config/systemd/user/dotfiles-backup.timer
+systemctl --user enable --now dotfiles-backup.timer
