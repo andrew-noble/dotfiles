@@ -59,16 +59,14 @@ require('nvim-treesitter').install({ 'bash', 'lua', 'python', 'html', 'markdown'
 vim.pack.add { 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' }
 require('nvim-treesitter-textobjects').setup {
   select = {
-    enable = true,
     lookahead = true, -- jump forward to next text object if not inside one
-    keymaps = {
-      ['af'] = '@function.outer',
-      ['if'] = '@function.inner',
-      ['ac'] = '@class.outer',
-      ['ic'] = '@class.inner',
-    },
   },
 }
+local ts_select = require('nvim-treesitter-textobjects.select').select_textobject
+vim.keymap.set({ 'x', 'o' }, 'af', function() ts_select('@function.outer', 'textobjects') end)
+vim.keymap.set({ 'x', 'o' }, 'if', function() ts_select('@function.inner', 'textobjects') end)
+vim.keymap.set({ 'x', 'o' }, 'ac', function() ts_select('@class.outer', 'textobjects') end)
+vim.keymap.set({ 'x', 'o' }, 'ic', function() ts_select('@class.inner', 'textobjects') end)
 
 -- diagnostics: virtual text inline + float auto-pops when cursor rests on an error
 vim.diagnostic.config {
