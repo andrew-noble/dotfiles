@@ -49,6 +49,10 @@ require('conform').setup {
     python = { 'isort', 'black' }, -- add new formatters here
     html = { 'prettier' },
   },
+  formatters = {
+    black = { prepend_args = { '--line-length', '100' } },
+    prettier = { prepend_args = { '--print-width', '100' } },
+  },
 }
 
 -- syntax highlighting with tree sitter
