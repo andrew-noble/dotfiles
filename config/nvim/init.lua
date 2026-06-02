@@ -57,7 +57,7 @@ require('conform').setup {
 
 -- syntax highlighting with tree sitter
 vim.pack.add { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' } }
-require('nvim-treesitter').install({ 'bash', 'lua', 'python', 'html', 'markdown' })
+require('nvim-treesitter').install({ 'bash', 'c', 'cpp', 'lua', 'python', 'html', 'markdown' })
 
 -- treesitter text objects: yaf/yif (function), yac/yic (class), etc.
 vim.pack.add { 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' }
