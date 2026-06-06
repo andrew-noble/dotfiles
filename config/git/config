@@ -7,5 +7,8 @@
         ui = auto
 [core]
 	editor = nvim
+	pager = delta
+[delta]
+	line-numbers = true
 [alias]
 	lg = "!git log --graph --pretty=\"%Cred%h%Creset-%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset\" -10"
